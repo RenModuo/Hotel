@@ -1,0 +1,5 @@
+com\example\gateway\controller\ActivityGatewayController.class
+com\example\gateway\controller\ApiGatewayController.class
+com\example\gateway\GatewayApplication.class
+com\example\gateway\config\RabbitPublisher.class
+com\example\gateway\config\RabbitConfig.class

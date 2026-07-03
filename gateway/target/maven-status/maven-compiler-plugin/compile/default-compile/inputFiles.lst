@@ -1,2 +1,5 @@
-D:\CSE\Project\Hotel\gateway\src\main\java\com\example\gateway\controller\ApiGatewayController.java
-D:\CSE\Project\Hotel\gateway\src\main\java\com\example\gateway\GatewayApplication.java
+C:\Users\UochMod\git\Hotel\gateway\src\main\java\com\example\gateway\config\RabbitConfig.java
+C:\Users\UochMod\git\Hotel\gateway\src\main\java\com\example\gateway\config\RabbitPublisher.java
+C:\Users\UochMod\git\Hotel\gateway\src\main\java\com\example\gateway\controller\ActivityGatewayController.java
+C:\Users\UochMod\git\Hotel\gateway\src\main\java\com\example\gateway\controller\ApiGatewayController.java
+C:\Users\UochMod\git\Hotel\gateway\src\main\java\com\example\gateway\GatewayApplication.java

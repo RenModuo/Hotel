@@ -5,6 +5,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.RequestEntity;
+import com.example.gateway.config.RabbitPublisher;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -21,12 +22,19 @@ import java.net.URI;
 public class ApiGatewayController {
 
     private final RestTemplate restTemplate = new RestTemplate();
+    private final RabbitPublisher rabbitPublisher;
+
+    public ApiGatewayController(RabbitPublisher rabbitPublisher) {
+        this.rabbitPublisher = rabbitPublisher;
+    }
 
     private URI serviceUri(String service, String path) {
         return URI.create(String.format("http://%s:8080%s", service, path));
     }
 
     private ResponseEntity<String> proxy(HttpMethod method, String service, String path, HttpHeaders headers, String body) {
+        String event = String.format("method=%s service=%s path=%s", method, service, path);
+        rabbitPublisher.publishActivity(event);
         RequestEntity<String> request = new RequestEntity<>(body, headers, method, serviceUri(service, path));
         return restTemplate.exchange(request, String.class);
     }
